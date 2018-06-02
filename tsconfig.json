@@ -16,6 +16,14 @@
     "target": "es5",
     "typeRoots": [
       "node_modules/@types"
-    ]
+    ],
+    "paths": {
+      "ngx-material-components": [
+        "dist/ngx-material-components"
+      ],
+      "ngx-material-components/*": [
+        "dist/ngx-material-components/*"
+      ]
+    }
   }
 }
