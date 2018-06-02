@@ -42,6 +42,129 @@
           }
         }
       }
+    },
+    "ngx-material-components-examples": {
+      "root": "projects/ngx-material-components-examples/",
+      "sourceRoot": "projects/ngx-material-components-examples/src",
+      "projectType": "application",
+      "prefix": "example",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ngx-material-components-examples",
+            "index": "projects/ngx-material-components-examples/src/index.html",
+            "main": "projects/ngx-material-components-examples/src/main.ts",
+            "polyfills": "projects/ngx-material-components-examples/src/polyfills.ts",
+            "tsConfig": "projects/ngx-material-components-examples/tsconfig.app.json",
+            "assets": [
+              "projects/ngx-material-components-examples/src/favicon.ico",
+              "projects/ngx-material-components-examples/src/assets"
+            ],
+            "styles": [
+              "projects/ngx-material-components-examples/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ngx-material-components-examples/src/environments/environment.ts",
+                  "with": "projects/ngx-material-components-examples/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ngx-material-components-examples:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ngx-material-components-examples:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ngx-material-components-examples:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-material-components-examples/src/test.ts",
+            "polyfills": "projects/ngx-material-components-examples/src/polyfills.ts",
+            "tsConfig": "projects/ngx-material-components-examples/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-material-components-examples/karma.conf.js",
+            "styles": [
+              "projects/ngx-material-components-examples/src/styles.scss"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/ngx-material-components-examples/src/favicon.ico",
+              "projects/ngx-material-components-examples/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-material-components-examples/tsconfig.app.json",
+              "projects/ngx-material-components-examples/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ngx-material-components-examples-e2e": {
+      "root": "projects/ngx-material-components-examples-e2e/",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/ngx-material-components-examples-e2e/protractor.conf.js",
+            "devServerTarget": "ngx-material-components-examples:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ngx-material-components-examples:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/ngx-material-components-examples-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-material-components",
