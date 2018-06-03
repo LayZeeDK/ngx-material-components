@@ -24,6 +24,7 @@
     "moduleResolution": "node",
     "outDir": "../out-tsc/lib",
     "sourceMap": true,
+    "strict": true,
     "target": "es2015",
     "types": []
   },
