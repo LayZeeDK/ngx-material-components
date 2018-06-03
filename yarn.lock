@@ -277,6 +277,30 @@
   dependencies:
     "@types/jasmine" "*"
 
+"@types/material__base@*":
+  version "0.35.0"
+  resolved "https://registry.yarnpkg.com/@types/material__base/-/material__base-0.35.0.tgz#ad7ee346c50dce541b4d5acc209a4313399f6880"
+
+"@types/material__checkbox@^0.35.0":
+  version "0.35.0"
+  resolved "https://registry.yarnpkg.com/@types/material__checkbox/-/material__checkbox-0.35.0.tgz#e2832069aa3fecbb24de5588b96e49e52f667dc5"
+  dependencies:
+    "@types/material__base" "*"
+    "@types/material__ripple" "*"
+    "@types/material__selection-control" "*"
+
+"@types/material__ripple@*":
+  version "0.35.0"
+  resolved "https://registry.yarnpkg.com/@types/material__ripple/-/material__ripple-0.35.0.tgz#be62a3f5e0c5790a482658999b25712bb9ea1a83"
+  dependencies:
+    "@types/material__base" "*"
+
+"@types/material__selection-control@*":
+  version "0.35.0"
+  resolved "https://registry.yarnpkg.com/@types/material__selection-control/-/material__selection-control-0.35.0.tgz#3db6f601e33a5e4dd96b38ad4cdc78993c45274f"
+  dependencies:
+    "@types/material__ripple" "*"
+
 "@types/node@*":
   version "10.3.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.3.0.tgz#078516315a84d56216b5d4fed8f75d59d3b16cac"
