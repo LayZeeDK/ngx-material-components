@@ -1,26 +1,22 @@
 import {
   AfterViewInit,
-  ChangeDetectionStrategy,
   ChangeDetectorRef,
-  Component,
+  Directive,
   ElementRef,
   OnDestroy,
   OnInit,
   Renderer2,
   ViewChild,
-  ViewEncapsulation,
 } from '@angular/core';
 import { MDCCheckboxAdapter, MDCCheckboxFoundation } from '@material/checkbox';
 
 import { as } from '../common/coercion';
 
-@Component({
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None,
-  selector: 'mdc-checkbox',
-  templateUrl: 'checkbox.component.html',
+@Directive({
+  exportAs: 'mdcChecbox',
+  selector: '[mdc-checkbox]',
 })
-export class MdcCheckboxComponent implements AfterViewInit, OnDestroy, OnInit {
+export class MdcCheckboxDirective implements AfterViewInit, OnDestroy, OnInit {
   private readonly adapter: MDCCheckboxAdapter = {
     addClass: (className: string): void => {
       this.renderer.addClass(this.control.nativeElement, className);
