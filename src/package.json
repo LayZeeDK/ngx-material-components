@@ -1,6 +1,23 @@
 {
   "name": "ngx-material-components",
-  "version": "0.0.0",
+  "description": "[WIP] Material Components for Angular web apps. Angular Components implementing Material Components for the Web Adapters.",
+  "version": "0.1.1",
+  "license": "MIT",
+  "author": {
+    "name": "Lars Gyrup Brink Nielsen",
+    "email": "larsbrinknielsen@gmail.com",
+    "url": "https://github.com/LayZeeDK"
+  },
+  "homepage": "https://github.com/LayZeeDK/ngx-material-components",
+  "bugs": "https://github.com/LayZeeDK/ngx-material-components/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LayZeeDK/ngx-material-components.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "tag": "unknown"
+  },
   "peerDependencies": {
     "@angular/core": ">=6.0.0 <8.0.0"
   }

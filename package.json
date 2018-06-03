@@ -1,6 +1,5 @@
 {
-  "name": "ngx-material-components",
-  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "build": "ng build --prod",
     "postbuild": "npm run build:readme",
@@ -11,7 +10,6 @@
     "start": "ng serve --configuration=hmr",
     "test": "ng test"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^6.0.3",
     "@angular/common": "^6.0.3",
