@@ -19,10 +19,10 @@
     ],
     "paths": {
       "ngx-material-components": [
-        "dist/ngx-material-components"
+        "src"
       ],
       "ngx-material-components/*": [
-        "dist/ngx-material-components/*"
+        "src/*"
       ]
     }
   }
