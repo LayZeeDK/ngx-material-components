@@ -2,7 +2,9 @@
   "name": "ngx-material-components",
   "version": "0.0.0",
   "scripts": {
-    "build": "ng build",
+    "build": "ng build --prod",
+    "postbuild": "npm run build:readme",
+    "build:readme": "copyfiles README.md dist/ngx-material-components",
     "e2e": "ng e2e",
     "lint": "ng lint",
     "ng": "ng",
@@ -34,6 +36,7 @@
     "@types/jasminewd2": "^2.0.3",
     "@types/node": "^8.10.18",
     "codelyzer": "^4.3.0",
+    "copyfiles": "^2.0.0",
     "jasmine": "^3.1.0",
     "jasmine-core": "^3.1.0",
     "jasmine-spec-reporter": "^4.2.1",
