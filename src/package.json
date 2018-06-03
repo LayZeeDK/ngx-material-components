@@ -18,6 +18,16 @@
     "registry": "https://registry.npmjs.org/",
     "tag": "unknown"
   },
+  "keywords": [
+    "angular",
+    "angular-components",
+    "components",
+    "material",
+    "material-components",
+    "material-components-web",
+    "material-design",
+    "mdc-web"
+  ],
   "peerDependencies": {
     "@angular/core": ">=6.0.0 <8.0.0"
   }
