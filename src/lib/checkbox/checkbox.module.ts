@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 
-import { MdcCheckboxComponent } from './checkbox.directive';
+import { MdcCheckboxDirective } from './checkbox.directive';
 
 @NgModule({
-  declarations: [MdcCheckboxComponent],
-  exports: [MdcCheckboxComponent],
+  declarations: [MdcCheckboxDirective],
+  exports: [MdcCheckboxDirective],
 })
 export class MdcCheckboxModule {}
