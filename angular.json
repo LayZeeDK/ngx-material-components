@@ -4,37 +4,43 @@
   "newProjectRoot": "projects",
   "projects": {
     "ngx-material-components": {
-      "root": "projects/ngx-material-components",
-      "sourceRoot": "projects/ngx-material-components/src",
+      "root": "src/",
+      "sourceRoot": "src",
       "projectType": "library",
       "prefix": "mdc",
+      "schematics": {
+        "@schematics/angular:component": {
+          "changeDetection": "OnPush",
+          "viewEncapsulation": "None"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/ngx-material-components/tsconfig.lib.json",
-            "project": "projects/ngx-material-components/ng-package.json"
+            "tsConfig": "src/tsconfig.lib.json",
+            "project": "src/ng-package.json"
           },
           "configurations": {
             "production": {
-              "project": "projects/ngx-material-components/ng-package.prod.json"
+              "project": "src/ng-package.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngx-material-components/src/test.ts",
-            "tsConfig": "projects/ngx-material-components/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-material-components/karma.conf.js"
+            "main": "src/test.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "karmaConfig": "src/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/ngx-material-components/tsconfig.lib.json",
-              "projects/ngx-material-components/tsconfig.spec.json"
+              "src/tsconfig.lib.json",
+              "src/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -43,31 +49,26 @@
         }
       }
     },
-    "ngx-material-components-examples": {
-      "root": "projects/ngx-material-components-examples/",
-      "sourceRoot": "projects/ngx-material-components-examples/src",
+    "example-app": {
+      "root": "projects/example-app/",
+      "sourceRoot": "projects/example-app/src",
       "projectType": "application",
       "prefix": "example",
-      "schematics": {
-        "@schematics/angular:component": {
-          "styleext": "scss"
-        }
-      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngx-material-components-examples",
-            "index": "projects/ngx-material-components-examples/src/index.html",
-            "main": "projects/ngx-material-components-examples/src/main.ts",
-            "polyfills": "projects/ngx-material-components-examples/src/polyfills.ts",
-            "tsConfig": "projects/ngx-material-components-examples/tsconfig.app.json",
+            "outputPath": "dist/example-app",
+            "index": "projects/example-app/src/index.html",
+            "main": "projects/example-app/src/main.ts",
+            "polyfills": "projects/example-app/src/polyfills.ts",
+            "tsConfig": "projects/example-app/tsconfig.app.json",
             "assets": [
-              "projects/ngx-material-components-examples/src/favicon.ico",
-              "projects/ngx-material-components-examples/src/assets"
+              "projects/example-app/src/favicon.ico",
+              "projects/example-app/src/assets"
             ],
             "styles": [
-              "projects/ngx-material-components-examples/src/styles.scss"
+              "projects/example-app/src/styles.scss"
             ],
             "scripts": []
           },
@@ -75,8 +76,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/ngx-material-components-examples/src/environments/environment.ts",
-                  "with": "projects/ngx-material-components-examples/src/environments/environment.prod.ts"
+                  "replace": "projects/example-app/src/environments/environment.ts",
+                  "with": "projects/example-app/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -94,34 +95,34 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-material-components-examples:build"
+            "browserTarget": "example-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-material-components-examples:build:production"
+              "browserTarget": "example-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-material-components-examples:build"
+            "browserTarget": "example-app:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngx-material-components-examples/src/test.ts",
-            "polyfills": "projects/ngx-material-components-examples/src/polyfills.ts",
-            "tsConfig": "projects/ngx-material-components-examples/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-material-components-examples/karma.conf.js",
+            "main": "projects/example-app/src/test.ts",
+            "polyfills": "projects/example-app/src/polyfills.ts",
+            "tsConfig": "projects/example-app/tsconfig.spec.json",
+            "karmaConfig": "projects/example-app/karma.conf.js",
             "styles": [
-              "projects/ngx-material-components-examples/src/styles.scss"
+              "projects/example-app/src/styles.scss"
             ],
             "scripts": [],
             "assets": [
-              "projects/ngx-material-components-examples/src/favicon.ico",
-              "projects/ngx-material-components-examples/src/assets"
+              "projects/example-app/src/favicon.ico",
+              "projects/example-app/src/assets"
             ]
           }
         },
@@ -129,8 +130,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/ngx-material-components-examples/tsconfig.app.json",
-              "projects/ngx-material-components-examples/tsconfig.spec.json"
+              "projects/example-app/tsconfig.app.json",
+              "projects/example-app/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -139,26 +140,26 @@
         }
       }
     },
-    "ngx-material-components-examples-e2e": {
-      "root": "projects/ngx-material-components-examples-e2e/",
+    "e2e": {
+      "root": "projects/e2e/",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "projects/ngx-material-components-examples-e2e/protractor.conf.js",
-            "devServerTarget": "ngx-material-components-examples:serve"
+            "protractorConfig": "projects/e2e/protractor.conf.js",
+            "devServerTarget": "example-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ngx-material-components-examples:serve:production"
+              "devServerTarget": "example-app:serve:production"
             }
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": "projects/ngx-material-components-examples-e2e/tsconfig.e2e.json",
+            "tsConfig": "projects/e2e/tsconfig.e2e.json",
             "exclude": [
               "**/node_modules/**"
             ]
@@ -173,17 +174,13 @@
   },
   "schematics": {
     "@schematics/angular:component": {
-      "changeDetection": "OnPush",
-      "prefix": "mdc",
       "spec": false,
-      "styleext": "scss",
-      "viewEncapsulation": "None"
+      "styleext": "scss"
     },
     "@schematics/angular:class": {
       "spec": false
     },
     "@schematics/angular:directive": {
-      "prefix": "mdc",
       "spec": false
     },
     "@schematics/angular:guard": {
