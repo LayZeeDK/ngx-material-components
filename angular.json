@@ -73,6 +73,15 @@
             "scripts": []
           },
           "configurations": {
+            "hmr": {
+              "aot": true,
+              "fileReplacements": [
+                {
+                  "replace": "projects/example-app/src/environments/environment.ts",
+                  "with": "projects/example-app/src/environments/environment.hmr.ts"
+                }
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -98,6 +107,11 @@
             "browserTarget": "example-app:build"
           },
           "configurations": {
+            "hmr": {
+              "browserTarget": "example-app:build:hmr",
+              "hmr": true,
+              "hmrWarning": false
+            },
             "production": {
               "browserTarget": "example-app:build:production"
             }
