@@ -31,20 +31,20 @@ export class MdcCheckboxComponent implements AfterViewInit, OnDestroy {
   @Input()
   public controlId: string | undefined;
   @Input()
-  public get indeterminate(): boolean {
-    return this.foundation.isIndeterminate();
-  }
-  public set indeterminate(value: boolean) {
-    this.foundation.setIndeterminate(value);
-    this._indeterminate = value;
-  }
-  @Input()
   public get disabled(): boolean {
     return this.foundation.isDisabled();
   }
   public set disabled(value: boolean) {
     this.foundation.setDisabled(value);
     this._disabled = value;
+  }
+  @Input()
+  public get indeterminate(): boolean {
+    return this.foundation.isIndeterminate();
+  }
+  public set indeterminate(value: boolean) {
+    this.foundation.setIndeterminate(value);
+    this._indeterminate = value;
   }
 
   @ViewChild('control')
@@ -133,8 +133,8 @@ export class MdcCheckboxComponent implements AfterViewInit, OnDestroy {
     this.isAttachedToDom = true;
     this.foundation.init();
     this.foundation.setChecked(this._checked);
-    this.foundation.setIndeterminate(this._indeterminate);
     this.foundation.setDisabled(this._disabled);
+    this.foundation.setIndeterminate(this._indeterminate);
   }
 
   ngOnDestroy(): void {
