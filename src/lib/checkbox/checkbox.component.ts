@@ -54,6 +54,8 @@ export class MdcCheckboxComponent implements AfterViewInit, OnDestroy {
     this.foundation.setValue(value);
     this._value = value;
   }
+  @Input()
+  public name: string | undefined;
 
   @ViewChild('control')
   public control!: ElementRef<HTMLInputElement>
