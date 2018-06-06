@@ -46,6 +46,14 @@ export class MdcCheckboxComponent implements AfterViewInit, OnDestroy {
     this.foundation.setIndeterminate(value);
     this._indeterminate = value;
   }
+  @Input()
+  public get value(): string {
+    return this.foundation.getValue();
+  }
+  public set value(value: string) {
+    this.foundation.setValue(value);
+    this._value = value;
+  }
 
   @ViewChild('control')
   public control!: ElementRef<HTMLInputElement>
@@ -53,6 +61,7 @@ export class MdcCheckboxComponent implements AfterViewInit, OnDestroy {
   private _checked: boolean = false;
   private _disabled: boolean = false;
   private _indeterminate: boolean = false;
+  private _value: string = 'on';
   private readonly adapter: MDCCheckboxAdapter = {
     addClass: (className: string): void => {
       this.renderer.addClass(this.host.nativeElement, className);
@@ -135,6 +144,7 @@ export class MdcCheckboxComponent implements AfterViewInit, OnDestroy {
     this.foundation.setChecked(this._checked);
     this.foundation.setDisabled(this._disabled);
     this.foundation.setIndeterminate(this._indeterminate);
+    this.foundation.setValue(this._value);
   }
 
   ngOnDestroy(): void {
