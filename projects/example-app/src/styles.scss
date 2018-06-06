@@ -1,2 +1,8 @@
-@import '~@material/typography/mdc-typography';
-@import '~@material/checkbox/mdc-checkbox';
+@import "~@material/typography/mdc-typography";
+@import "~@material/ripple/mdc-ripple";
+@import "~@material/form-field/mdc-form-field";
+@import "~@material/checkbox/mdc-checkbox";
+
+.u-block {
+  display: block !important;
+}

@@ -1,10 +1,10 @@
 import {
   AfterViewInit,
   ChangeDetectorRef,
-  Directive,
+  Component,
   ElementRef,
+  Input,
   OnDestroy,
-  OnInit,
   Renderer2,
   ViewChild,
 } from '@angular/core';
@@ -12,14 +12,21 @@ import { MDCCheckboxAdapter, MDCCheckboxFoundation } from '@material/checkbox';
 
 import { as } from '../common/coercion';
 
-@Directive({
-  exportAs: 'mdcChecbox',
-  selector: '[mdc-checkbox]',
+@Component({
+  host: { class: 'mdc-checkbox' },
+  selector: 'mdc-checkbox',
+  templateUrl: './checkbox.component.html',
 })
-export class MdcCheckboxDirective implements AfterViewInit, OnDestroy, OnInit {
+export class MdcCheckboxComponent implements AfterViewInit, OnDestroy {
+  @Input()
+  public controlId: string | undefined;
+
+  @ViewChild('control')
+  public control!: ElementRef<HTMLInputElement>
+
   private readonly adapter: MDCCheckboxAdapter = {
     addClass: (className: string): void => {
-      this.renderer.addClass(this.control.nativeElement, className);
+      this.renderer.addClass(this.host.nativeElement, className);
     },
     deregisterAnimationEndHandler: (handler: EventListener): void => {
       if (!this.animationEndHandlers.has(handler)) {
@@ -44,12 +51,12 @@ export class MdcCheckboxDirective implements AfterViewInit, OnDestroy, OnInit {
      */
     forceLayout: (): void => {
       this.renderer.setProperty(
-        this.control.nativeElement,
+        this.host.nativeElement,
         'animation',
         'none');
       setTimeout(0, () => {
         this.renderer.setProperty(
-          this.control.nativeElement,
+          this.host.nativeElement,
           'animation',
           undefined
         );
@@ -71,7 +78,7 @@ export class MdcCheckboxDirective implements AfterViewInit, OnDestroy, OnInit {
         this.renderer.listen(this.control.nativeElement, 'change', handler));
     },
     removeClass: (className: string): void => {
-      this.renderer.removeClass(this.control.nativeElement, className);
+      this.renderer.removeClass(this.host.nativeElement, className);
     },
     removeNativeControlAttr: (attr: string): void => {
       this.renderer.removeAttribute(this.control.nativeElement, attr);
@@ -87,28 +94,25 @@ export class MdcCheckboxDirective implements AfterViewInit, OnDestroy, OnInit {
     new MDCCheckboxFoundation(this.adapter);
   private isAttachedToDom: boolean = false;
 
-  @ViewChild('control')
-  control!: ElementRef<HTMLInputElement>;
-
   constructor(
     private readonly renderer: Renderer2,
     private readonly changeDetector: ChangeDetectorRef,
+    private readonly host: ElementRef<HTMLElement>,
   ) {}
-
-  ngOnInit(): void {
-    this.foundation.init();
-  }
 
   ngAfterViewInit(): void {
     this.isAttachedToDom = true;
+    this.foundation.init();
   }
 
   ngOnDestroy(): void {
-    this.isAttachedToDom = false;
     this.foundation.destroy();
+    console.log('animationend handlers left', this.animationEndHandlers.size);
     this.animationEndHandlers.forEach(deregisterHandler => deregisterHandler());
     this.animationEndHandlers.clear();
+    console.log('change handlers left', this.changeHandlers.size);
     this.changeHandlers.forEach(deregisterHandler => deregisterHandler());
     this.changeHandlers.clear();
+    this.isAttachedToDom = false;
   }
 }
