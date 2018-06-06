@@ -1,7 +1,7 @@
 {
   "name": "ngx-material-components",
-  "description": "[WIP] Material Components for Angular web apps. Angular Components implementing Material Components for the Web Adapters.",
-  "version": "0.1.1",
+  "description": "Material Components for Angular web apps. Angular Components implementing Material Components for the Web Adapters.",
+  "version": "0.1.2",
   "license": "MIT",
   "author": {
     "name": "Lars Gyrup Brink Nielsen",
