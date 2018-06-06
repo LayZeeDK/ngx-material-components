@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ElementRef,
@@ -13,11 +14,20 @@ import { MDCCheckboxAdapter, MDCCheckboxFoundation } from '@material/checkbox';
 import { as } from '../common/coercion';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   host: { class: 'mdc-checkbox' },
   selector: 'mdc-checkbox',
   templateUrl: './checkbox.component.html',
 })
 export class MdcCheckboxComponent implements AfterViewInit, OnDestroy {
+  @Input()
+  public get checked(): boolean {
+    return this.foundation.isChecked();
+  }
+  public set checked(value: boolean) {
+    this.foundation.setChecked(value);
+    this._checked = value;
+  }
   @Input()
   public controlId: string | undefined;
 
@@ -90,6 +100,7 @@ export class MdcCheckboxComponent implements AfterViewInit, OnDestroy {
   private readonly animationEndHandlers: Map<EventListener, (() => void)>
     = new Map();
   private readonly changeHandlers: Map<EventListener, (() => void)> = new Map();
+  private _checked: boolean = false;
   private foundation: MDCCheckboxFoundation =
     new MDCCheckboxFoundation(this.adapter);
   private isAttachedToDom: boolean = false;
@@ -103,6 +114,9 @@ export class MdcCheckboxComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this.isAttachedToDom = true;
     this.foundation.init();
+    this.foundation.setChecked(this._checked);
+    this.adapter.registerChangeHandler(() =>
+      this.changeDetector.markForCheck());
   }
 
   ngOnDestroy(): void {
