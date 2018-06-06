@@ -2,4 +2,4 @@
  * Public API Surface of ngx-material-components
  */
 
-export * from './lib/mdc.module';
+export { MdcCheckboxComponent, MdcCheckboxModule } from './lib/checkbox';
