@@ -1,9 +1,10 @@
-# [WIP] Material Components for Angular
+# Material Components for Angular (ngx-material-components)
 
-Material Components for Angular web apps. Angular Components implementing
-Material Components for the Web Adapters.
+Material Components for Angular web apps.
 
-# Installation
+Angular Components implementing [*Material Components for the Web*](https://material.io/develop/web) Adapters.
+
+## Installation
 
 Install using NPM CLI
 ```
