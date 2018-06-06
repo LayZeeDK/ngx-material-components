@@ -5,4 +5,8 @@ import { Component } from '@angular/core';
   selector: 'example-checkbox-page',
   templateUrl: './checkbox-page.component.html',
 })
-export class CheckboxPageComponent {}
+export class CheckboxPageComponent {
+  public onCheckedChange(isChecked: boolean): void {
+    alert(`Checked? ${isChecked ? 'Yes' : 'No'}`);
+  }
+}

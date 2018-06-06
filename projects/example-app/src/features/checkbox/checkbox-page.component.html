@@ -43,6 +43,8 @@
   </label>
 </div>
 
+<br />
+
 <div class="mdc-form-field">
   <mdc-checkbox
     controlId="value"
@@ -69,5 +71,15 @@
 
   <label for="custom-id">
     ID
+  </label>
+</div>
+
+<div class="mdc-form-field">
+  <mdc-checkbox
+    controlId="change"
+    (checkedChange)="onCheckedChange($event)"></mdc-checkbox>
+
+  <label for="change">
+    <code>checkedChange</code> event
   </label>
 </div>

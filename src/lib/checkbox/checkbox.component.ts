@@ -13,6 +13,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MDCCheckboxAdapter, MDCCheckboxFoundation } from '@material/checkbox';
+import { Subject } from 'rxjs';
 
 import { as } from '../common/coercion';
 
@@ -60,12 +61,13 @@ export class MdcCheckboxComponent implements AfterViewInit, OnDestroy, OnInit {
   @Input()
   public name: string | undefined;
   @Output()
-  public readonly change: EventEmitter<boolean> = new EventEmitter();
+  public readonly checkedChange: EventEmitter<boolean> = new EventEmitter();
 
   @ViewChild('control')
   public control!: ElementRef<HTMLInputElement>
 
   private _checked: boolean = false;
+  private readonly _change: Subject<boolean> = new Subject();
   private _disabled: boolean = false;
   private _indeterminate: boolean = false;
   private _value: string = 'on';
@@ -113,9 +115,9 @@ export class MdcCheckboxComponent implements AfterViewInit, OnDestroy, OnInit {
       : this.control.nativeElement,
     isAttachedToDOM: (): boolean => this.isAttachedToDom,
     registerAnimationEndHandler: (handler: EventListener): void => {
-      this.changeHandlers.set(
+      this.animationEndHandlers.set(
         handler,
-        this.renderer.listen(this.control.nativeElement, 'animationend', handler));
+        this.renderer.listen(this.host.nativeElement, 'animationend', handler));
     },
     registerChangeHandler: (handler: EventListener): void => {
       this.changeHandlers.set(
@@ -147,7 +149,7 @@ export class MdcCheckboxComponent implements AfterViewInit, OnDestroy, OnInit {
 
   ngOnInit(): void {
     this.adapter.registerChangeHandler(() =>
-      this.change.emit(this.foundation.isChecked()));
+      this.checkedChange.emit(this.foundation.isChecked()));
   }
 
   ngAfterViewInit(): void {

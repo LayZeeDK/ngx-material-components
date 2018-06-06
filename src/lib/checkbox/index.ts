@@ -1,2 +1,2 @@
-export * from './checkbox.directive';
+export * from './checkbox.component';
 export * from './checkbox.module';
