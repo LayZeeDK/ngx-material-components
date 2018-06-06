@@ -4,8 +4,11 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   Input,
   OnDestroy,
+  OnInit,
+  Output,
   Renderer2,
   ViewChild,
 } from '@angular/core';
@@ -19,7 +22,7 @@ import { as } from '../common/coercion';
   selector: 'mdc-checkbox',
   templateUrl: './checkbox.component.html',
 })
-export class MdcCheckboxComponent implements AfterViewInit, OnDestroy {
+export class MdcCheckboxComponent implements AfterViewInit, OnDestroy, OnInit {
   @Input()
   public get checked(): boolean {
     return this.foundation.isChecked();
@@ -56,6 +59,8 @@ export class MdcCheckboxComponent implements AfterViewInit, OnDestroy {
   }
   @Input()
   public name: string | undefined;
+  @Output()
+  public readonly change: EventEmitter<boolean> = new EventEmitter();
 
   @ViewChild('control')
   public control!: ElementRef<HTMLInputElement>
@@ -139,6 +144,11 @@ export class MdcCheckboxComponent implements AfterViewInit, OnDestroy {
     private readonly changeDetector: ChangeDetectorRef,
     private readonly host: ElementRef<HTMLElement>,
   ) {}
+
+  ngOnInit(): void {
+    this.adapter.registerChangeHandler(() =>
+      this.change.emit(this.foundation.isChecked()));
+  }
 
   ngAfterViewInit(): void {
     this.isAttachedToDom = true;
