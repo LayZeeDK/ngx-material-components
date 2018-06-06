@@ -30,10 +30,20 @@ export class MdcCheckboxComponent implements AfterViewInit, OnDestroy {
   }
   @Input()
   public controlId: string | undefined;
+  @Input()
+  public get indeterminate(): boolean {
+    return this.foundation.isIndeterminate();
+  }
+  public set indeterminate(value: boolean) {
+    this.foundation.setIndeterminate(value);
+    this._indeterminate = value;
+  }
 
   @ViewChild('control')
   public control!: ElementRef<HTMLInputElement>
 
+  private _checked: boolean = false;
+  private _indeterminate: boolean = false;
   private readonly adapter: MDCCheckboxAdapter = {
     addClass: (className: string): void => {
       this.renderer.addClass(this.host.nativeElement, className);
@@ -100,7 +110,6 @@ export class MdcCheckboxComponent implements AfterViewInit, OnDestroy {
   private readonly animationEndHandlers: Map<EventListener, (() => void)>
     = new Map();
   private readonly changeHandlers: Map<EventListener, (() => void)> = new Map();
-  private _checked: boolean = false;
   private foundation: MDCCheckboxFoundation =
     new MDCCheckboxFoundation(this.adapter);
   private isAttachedToDom: boolean = false;
@@ -115,6 +124,7 @@ export class MdcCheckboxComponent implements AfterViewInit, OnDestroy {
     this.isAttachedToDom = true;
     this.foundation.init();
     this.foundation.setChecked(this._checked);
+    this.foundation.setIndeterminate(this._indeterminate);
     this.adapter.registerChangeHandler(() =>
       this.changeDetector.markForCheck());
   }
