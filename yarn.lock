@@ -196,15 +196,15 @@
   version "0.35.0"
   resolved "https://registry.yarnpkg.com/@material/base/-/base-0.35.0.tgz#8640c2da385e8cc393ff56153c5a319f5a7704cb"
 
-"@material/checkbox@^0.35.0":
-  version "0.35.0"
-  resolved "https://registry.yarnpkg.com/@material/checkbox/-/checkbox-0.35.0.tgz#a9bc5d09f75d2cbd2f2cb450561946430b2f8c77"
+"@material/checkbox@^0.36.0":
+  version "0.36.0"
+  resolved "https://registry.yarnpkg.com/@material/checkbox/-/checkbox-0.36.0.tgz#934bdf4319644b4e8ac5478f5934aa33bf016565"
   dependencies:
     "@material/animation" "^0.34.0"
     "@material/base" "^0.35.0"
-    "@material/ripple" "^0.35.0"
-    "@material/rtl" "^0.35.0"
-    "@material/selection-control" "^0.35.0"
+    "@material/ripple" "^0.36.0"
+    "@material/rtl" "^0.36.0"
+    "@material/selection-control" "^0.36.0"
     "@material/theme" "^0.35.0"
 
 "@material/form-field@^0.36.0":
@@ -217,13 +217,6 @@
     "@material/theme" "^0.35.0"
     "@material/typography" "^0.35.0"
 
-"@material/ripple@^0.35.0":
-  version "0.35.0"
-  resolved "https://registry.yarnpkg.com/@material/ripple/-/ripple-0.35.0.tgz#3670e04e02dd6efc1ff0546e5129b4e96ec55f70"
-  dependencies:
-    "@material/base" "^0.35.0"
-    "@material/theme" "^0.35.0"
-
 "@material/ripple@^0.36.0":
   version "0.36.0"
   resolved "https://registry.yarnpkg.com/@material/ripple/-/ripple-0.36.0.tgz#262491c37643c3aabad93cd033698622c70beb13"
@@ -232,19 +225,9 @@
     "@material/base" "^0.35.0"
     "@material/theme" "^0.35.0"
 
-"@material/rtl@^0.35.0":
-  version "0.35.0"
-  resolved "https://registry.yarnpkg.com/@material/rtl/-/rtl-0.35.0.tgz#caae659e35a9bf1b9d91c734c8a3315a81bcde21"
-
 "@material/rtl@^0.36.0":
   version "0.36.0"
   resolved "https://registry.yarnpkg.com/@material/rtl/-/rtl-0.36.0.tgz#a81b587981dc6e09f51e26da8a7447f89358ccd5"
-
-"@material/selection-control@^0.35.0":
-  version "0.35.0"
-  resolved "https://registry.yarnpkg.com/@material/selection-control/-/selection-control-0.35.0.tgz#e13640b37f5719f43edc315625ee862f1f3a8302"
-  dependencies:
-    "@material/ripple" "^0.35.0"
 
 "@material/selection-control@^0.36.0":
   version "0.36.0"
@@ -256,7 +239,7 @@
   version "0.35.0"
   resolved "https://registry.yarnpkg.com/@material/theme/-/theme-0.35.0.tgz#a2c76f60b82a53d399b769ef91ec52e83ad3c3bd"
 
-"@material/typography@^0.35.0":
+"@material/typography@^0.35.0", "@material/typography@^0.36.0":
   version "0.35.0"
   resolved "https://registry.yarnpkg.com/@material/typography/-/typography-0.35.0.tgz#23ad7eb7c9789e69c7c3fa54df8fc311cd7fc4b1"
 

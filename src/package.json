@@ -29,6 +29,7 @@
     "mdc-web"
   ],
   "peerDependencies": {
-    "@angular/core": ">=6.0.0 <8.0.0"
+    "@angular/core": ">=6.0.0 <8.0.0",
+    "@material/checkbox": "^0.36.0"
   }
 }
