@@ -1,7 +1,7 @@
 {
   "name": "ngx-material-components",
-  "description": "[WIP] Material Components for Angular web apps. Angular Components implementing Material Components for the Web Adapters.",
-  "version": "0.1.1",
+  "description": "Material Components for Angular web apps. Angular Components implementing Material Components for the Web Adapters.",
+  "version": "0.1.2",
   "license": "MIT",
   "author": {
     "name": "Lars Gyrup Brink Nielsen",
@@ -29,6 +29,8 @@
     "mdc-web"
   ],
   "peerDependencies": {
-    "@angular/core": ">=6.0.0 <8.0.0"
+    "@angular/core": ">=6.0.0 <8.0.0",
+    "@material/checkbox": "^0.36.0",
+    "rxjs": "^6.0.0"
   }
 }

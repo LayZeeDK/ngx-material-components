@@ -18,7 +18,7 @@
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "src/tsconfig.lib.json",
+            "tsConfig": "src/tsconfig.json",
             "project": "src/ng-package.json"
           },
           "configurations": {
@@ -39,7 +39,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/tsconfig.lib.json",
+              "src/tsconfig.json",
               "src/tsconfig.spec.json"
             ],
             "exclude": [
@@ -70,7 +70,12 @@
             "styles": [
               "projects/example-app/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules"
+              ]
+            }
           },
           "configurations": {
             "hmr": {

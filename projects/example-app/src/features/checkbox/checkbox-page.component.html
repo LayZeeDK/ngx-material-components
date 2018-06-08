@@ -1,0 +1,85 @@
+<h1>
+  Checkbox
+</h1>
+
+
+
+<div class="mdc-form-field">
+  <mdc-checkbox
+    controlId="unchecked"></mdc-checkbox>
+
+  <label for="unchecked">
+    Unchecked
+  </label>
+</div>
+
+<div class="mdc-form-field">
+  <mdc-checkbox
+    controlId="checked"
+    [checked]="true"></mdc-checkbox>
+
+  <label for="checked">
+    Checked
+  </label>
+</div>
+
+<div class="mdc-form-field">
+  <mdc-checkbox
+    controlId="indeterminate"
+    [indeterminate]="true"></mdc-checkbox>
+
+  <label for="indeterminate">
+    Indeterminate
+  </label>
+</div>
+
+<div class="mdc-form-field">
+  <mdc-checkbox
+    controlId="disabled"
+    [disabled]="true"></mdc-checkbox>
+
+  <label for="disabled">
+    Disabled
+  </label>
+</div>
+
+<br />
+
+<div class="mdc-form-field">
+  <mdc-checkbox
+    controlId="value"
+    value="custom-value"></mdc-checkbox>
+
+  <label for="value">
+    Value
+  </label>
+</div>
+
+<div class="mdc-form-field">
+  <mdc-checkbox
+    controlId="name"
+    name="custom-name"></mdc-checkbox>
+
+  <label for="name">
+    Name
+  </label>
+</div>
+
+<div class="mdc-form-field">
+  <mdc-checkbox
+    controlId="custom-id"></mdc-checkbox>
+
+  <label for="custom-id">
+    ID
+  </label>
+</div>
+
+<div class="mdc-form-field">
+  <mdc-checkbox
+    controlId="change"
+    (checkedChange)="onCheckedChange($event)"></mdc-checkbox>
+
+  <label for="change">
+    <code>checkedChange</code> event
+  </label>
+</div>
