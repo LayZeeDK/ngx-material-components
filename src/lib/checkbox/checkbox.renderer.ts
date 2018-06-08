@@ -58,11 +58,23 @@ export class MdcCheckboxRenderer implements AfterViewInit, OnDestroy, OnInit {
     this.insertBackgroundAfterControl();
     this.adapter.ngAfterViewInit();
     this.foundation.init();
+    this.synchronizeState();
   }
 
   ngOnDestroy(): void {
     this.foundation.destroy();
     this.adapter.ngOnDestroy();
+  }
+
+  /**
+   * When control properties have been changed elsewhere, we need to
+   * synchronize the foundation state and rendered classes.
+   */
+  synchronizeState(): void {
+    this.foundation.setChecked(this.foundation.isChecked());
+    this.foundation.setDisabled(this.foundation.isDisabled());
+    this.foundation.setIndeterminate(this.foundation.isIndeterminate());
+    this.foundation.setValue(this.foundation.getValue());
   }
 
   private addControlClass(): void {
