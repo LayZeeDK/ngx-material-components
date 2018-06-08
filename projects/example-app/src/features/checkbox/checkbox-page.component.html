@@ -1,8 +1,6 @@
 <h1>
-  Checkbox
+  Checkbox Component
 </h1>
-
-
 
 <div class="mdc-form-field">
   <mdc-checkbox
@@ -81,5 +79,82 @@
 
   <label for="change">
     <code>checkedChange</code> event
+  </label>
+</div>
+
+
+
+<h1>
+  Checkbox Directive
+</h1>
+
+<div class="mdc-form-field">
+  <input id="d-unchecked" mdcCheckbox type="checkbox" />
+
+  <label for="d-unchecked">
+    Unchecked
+  </label>
+</div>
+
+<div class="mdc-form-field">
+  <input id="d-checked" mdcCheckbox type="checkbox"
+    checked />
+
+  <label for="d-checked">
+    Checked
+  </label>
+</div>
+
+<!-- <div class="mdc-form-field">
+  <mdc-checkbox controlId="indeterminate" [indeterminate]="true"></mdc-checkbox>
+
+  <label for="indeterminate">
+    Indeterminate
+  </label>
+</div> -->
+
+<div class="mdc-form-field">
+  <input id="d-disabled" mdcCheckbox type="checkbox"
+    disabled />
+
+  <label for="d-disabled">
+    Disabled
+  </label>
+</div>
+
+<br />
+
+<div class="mdc-form-field">
+  <input id="d-value" mdcCheckbox type="checkbox"
+    value="custom-value" />
+
+  <label for="d-value">
+    Value
+  </label>
+</div>
+
+<div class="mdc-form-field">
+  <input id="d-name" mdcCheckbox type="checkbox"
+    name="custom-name" />
+
+  <label for="d-name">
+    Name
+  </label>
+</div>
+
+<div class="mdc-form-field">
+  <input id="d-custom-id" mdcCheckbox type="checkbox" />
+
+  <label for="d-custom-id">
+    ID
+  </label>
+</div>
+
+<div class="mdc-form-field">
+  <input id="d-change" mdcCheckbox type="checkbox"
+    (change)="onCheckedChange($event.target.checked)" />
+
+  <label for="d-change">
+    <code>change</code> event
   </label>
 </div>
