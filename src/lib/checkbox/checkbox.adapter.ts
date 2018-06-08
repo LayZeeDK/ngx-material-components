@@ -31,6 +31,14 @@ implements AfterViewInit, OnDestroy, MDCCheckboxAdapter {
   }
 
   ngOnDestroy(): void {
+    // TODO: Verify that only one handler is left
+    // console.log('animationend handlers left', this.animationEndHandlers.size);
+    this.animationEndHandlers.forEach(deregisterHandler => deregisterHandler());
+    this.animationEndHandlers.clear();
+    // TODO: Verify that only one handler is left
+    // console.log('change handlers left', this.changeHandlers.size);
+    this.changeHandlers.forEach(deregisterHandler => deregisterHandler());
+    this.changeHandlers.clear();
     this.isAttachedToDom = false;
   }
 
