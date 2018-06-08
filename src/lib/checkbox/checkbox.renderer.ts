@@ -32,9 +32,12 @@ export class MdcCheckboxRenderer implements AfterViewInit, OnDestroy, OnInit {
   foundation!: MDCCheckboxFoundation;
 
   constructor(
-    private readonly controlRef: ElementRef<HTMLInputElement>,
     private readonly renderer: Renderer2,
     private readonly changeDetector: ChangeDetectorRef,
+    /**
+     * Control must have parent node.
+     */
+    private readonly controlRef: ElementRef<HTMLInputElement>,
   ) {}
 
   ngOnInit(): void {
