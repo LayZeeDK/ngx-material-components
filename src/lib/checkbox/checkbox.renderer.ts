@@ -1,15 +1,20 @@
 import {
   AfterViewInit,
+  ChangeDetectorRef,
   ElementRef,
   Injectable,
+  OnDestroy,
   OnInit,
   Renderer2,
 } from '@angular/core';
+import { MDCCheckboxFoundation } from '@material/checkbox';
+
+import { MdcCheckboxAdapter } from './checkbox.adapter';
 
 const svgNamespace: string = 'http://www.w3.org/2000/svg';
 
 @Injectable()
-export class MdcCheckboxRenderer implements AfterViewInit, OnInit {
+export class MdcCheckboxRenderer implements AfterViewInit, OnDestroy, OnInit {
   private background!: HTMLElement;
   private get control(): HTMLInputElement {
     return this.controlRef.nativeElement;
@@ -17,14 +22,30 @@ export class MdcCheckboxRenderer implements AfterViewInit, OnInit {
   private parent!: HTMLElement;
   private wrapper!: HTMLElement;
 
+  /**
+   * Available on init.
+   */
+  adapter!: MdcCheckboxAdapter;
+  /**
+   * Available on init.
+   */
+  foundation!: MDCCheckboxFoundation;
+
   constructor(
     private readonly controlRef: ElementRef<HTMLInputElement>,
     private readonly renderer: Renderer2,
+    private readonly changeDetector: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
     this.wrapper = this.createWrapper();
     this.background = this.createBackground();
+    this.adapter = new MdcCheckboxAdapter(
+      this.renderer,
+      this.changeDetector,
+      this.wrapper,
+      this.controlRef);
+    this.foundation = new MDCCheckboxFoundation(this.adapter);
   }
 
   ngAfterViewInit(): void {
@@ -32,6 +53,12 @@ export class MdcCheckboxRenderer implements AfterViewInit, OnInit {
     this.addControlClass();
     this.wrapControl();
     this.insertBackgroundAfterControl();
+    this.adapter.ngAfterViewInit();
+    this.foundation.init();
+  }
+
+  ngOnDestroy(): void {
+    this.adapter.ngOnDestroy();
   }
 
   private addControlClass(): void {

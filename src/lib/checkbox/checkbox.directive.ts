@@ -1,4 +1,10 @@
-import { AfterViewInit, Directive, Host, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Directive,
+  Host,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 
 import { MdcCheckboxRenderer } from './checkbox.renderer';
 
@@ -8,7 +14,7 @@ import { MdcCheckboxRenderer } from './checkbox.renderer';
     MdcCheckboxRenderer,
   ],
 })
-export class MdcCheckboxDirective implements AfterViewInit, OnInit {
+export class MdcCheckboxDirective implements AfterViewInit, OnDestroy, OnInit {
   constructor(
     @Host()
     private readonly renderer: MdcCheckboxRenderer,
@@ -20,5 +26,9 @@ export class MdcCheckboxDirective implements AfterViewInit, OnInit {
 
   ngAfterViewInit(): void {
     this.renderer.ngAfterViewInit();
+  }
+
+  ngOnDestroy(): void {
+    this.renderer.ngOnDestroy();
   }
 }
