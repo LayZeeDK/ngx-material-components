@@ -27,7 +27,7 @@ export class MdcCheckboxRenderer implements AfterViewInit, OnDestroy, OnInit {
    */
   adapter!: MdcCheckboxAdapter;
   /**
-   * Available on init.
+   * Initialized after view init. Available on init.
    */
   foundation!: MDCCheckboxFoundation;
 
@@ -58,6 +58,7 @@ export class MdcCheckboxRenderer implements AfterViewInit, OnDestroy, OnInit {
   }
 
   ngOnDestroy(): void {
+    this.foundation.destroy();
     this.adapter.ngOnDestroy();
   }
 
