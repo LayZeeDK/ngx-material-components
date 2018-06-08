@@ -6,6 +6,8 @@ import {
   Renderer2,
 } from '@angular/core';
 
+const svgNamespace: string = 'http://www.w3.org/2000/svg';
+
 @Injectable()
 export class MdcCheckboxRenderer implements AfterViewInit, OnInit {
   private background!: HTMLElement;
@@ -50,16 +52,16 @@ export class MdcCheckboxRenderer implements AfterViewInit, OnInit {
     return background;
   }
 
-  private createCheckMark(): SVGElement {
-    const checkMarkBox: SVGElement = this.renderer.createElement('svg');
+  private createCheckMark(): SVGSVGElement {
+    const checkMarkBox: SVGSVGElement = this.createSvgElement('svg');
     this.renderer.addClass(checkMarkBox, 'mdc-checkbox__checkmark');
-    this.renderer.setProperty(checkMarkBox, 'viewBox', '0 0 24 24');
+    this.renderer.setAttribute(checkMarkBox, 'viewBox', '0 0 24 24');
 
-    const checkMark: SVGPathElement = this.renderer.createElement('path');
+    const checkMark: SVGPathElement = this.createSvgElement('path');
     this.renderer.addClass(checkMark, 'mdc-checkbox__checkmark-path');
-    this.renderer.setProperty(checkMark, 'fill', 'none');
-    this.renderer.setProperty(checkMark, 'stroke', 'white');
-    this.renderer.setProperty(
+    this.renderer.setAttribute(checkMark, 'fill', 'none');
+    this.renderer.setAttribute(checkMark, 'stroke', 'white');
+    this.renderer.setAttribute(
       checkMark,
       'd',
       'M1.73,12.91 8.1,19.28 22.79,4.59');
@@ -74,6 +76,12 @@ export class MdcCheckboxRenderer implements AfterViewInit, OnInit {
     this.renderer.addClass(mixedMark, 'mdc-checkbox__mixedmark');
 
     return mixedMark;
+  }
+
+  private createSvgElement<T extends SVGElement = SVGElement>(
+    name: string,
+  ): T {
+    return this.renderer.createElement(name, svgNamespace);
   }
 
   private createWrapper(): HTMLElement {
