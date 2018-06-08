@@ -2,9 +2,7 @@ import {
   AfterViewInit,
   Directive,
   EventEmitter,
-  Input,
   OnChanges,
-  OnDestroy,
   OnInit,
   Output,
   Self,
@@ -21,7 +19,7 @@ import { MdcCheckboxRenderer } from './checkbox.renderer';
   ],
 })
 export class MdcCheckboxDirective
-implements AfterViewInit, OnChanges, OnDestroy, OnInit {
+implements AfterViewInit, OnChanges, OnInit {
   /**
    * Available on init.
    */
@@ -35,14 +33,14 @@ implements AfterViewInit, OnChanges, OnDestroy, OnInit {
     return this.renderer.foundation;
   }
 
-  @Input()
-  checked: boolean | undefined;
-  @Input()
-  disabled: boolean | undefined;
-  @Input()
-  indeterminate: boolean | undefined;
-  @Input()
-  value: string | undefined;
+  // @Input()
+  // checked: boolean | undefined;
+  // @Input()
+  // disabled: boolean | undefined;
+  // @Input()
+  // indeterminate: boolean | undefined;
+  // @Input()
+  // value: string | undefined;
   @Output()
   readonly checkedChange: EventEmitter<boolean> = new EventEmitter();
 
@@ -56,16 +54,12 @@ implements AfterViewInit, OnChanges, OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
-    this.renderer.ngOnInit();
+    this.renderer.onInit();
     this.adapter.registerChangeHandler(() =>
       this.checkedChange.emit(this.foundation.isChecked()));
   }
 
   ngAfterViewInit(): void {
-    this.renderer.ngAfterViewInit();
-  }
-
-  ngOnDestroy(): void {
-    this.renderer.ngOnDestroy();
+    this.renderer.afterViewInit();
   }
 }

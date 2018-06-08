@@ -1,10 +1,8 @@
 import {
-  AfterViewInit,
   ChangeDetectorRef,
   ElementRef,
   Injectable,
   OnDestroy,
-  OnInit,
   Renderer2,
 } from '@angular/core';
 import { MDCCheckboxFoundation } from '@material/checkbox';
@@ -14,7 +12,7 @@ import { MdcCheckboxAdapter } from './checkbox.adapter';
 const svgNamespace: string = 'http://www.w3.org/2000/svg';
 
 @Injectable()
-export class MdcCheckboxRenderer implements AfterViewInit, OnDestroy, OnInit {
+export class MdcCheckboxRenderer implements OnDestroy {
   private background!: HTMLElement;
   private get control(): HTMLInputElement {
     return this.controlRef.nativeElement;
@@ -40,30 +38,34 @@ export class MdcCheckboxRenderer implements AfterViewInit, OnDestroy, OnInit {
     private readonly controlRef: ElementRef<HTMLInputElement>,
   ) {}
 
-  ngOnInit(): void {
+  ngOnDestroy(): void {
+    this.onDestroy();
+  }
+
+  onInit(): void {
     this.wrapper = this.createWrapper();
     this.background = this.createBackground();
     this.adapter = new MdcCheckboxAdapter(
       this.renderer,
       this.changeDetector,
       this.wrapper,
-      this.controlRef);
+      this.control);
     this.foundation = new MDCCheckboxFoundation(this.adapter);
   }
 
-  ngAfterViewInit(): void {
+  afterViewInit(): void {
     this.parent = this.renderer.parentNode(this.control);
     this.addControlClass();
     this.wrapControl();
     this.insertBackgroundAfterControl();
-    this.adapter.ngAfterViewInit();
+    this.adapter.afterViewInit();
     this.foundation.init();
     this.synchronizeState();
   }
 
-  ngOnDestroy(): void {
+  onDestroy(): void {
     this.foundation.destroy();
-    this.adapter.ngOnDestroy();
+    this.adapter.onDestroy();
   }
 
   /**
@@ -124,7 +126,7 @@ export class MdcCheckboxRenderer implements AfterViewInit, OnDestroy, OnInit {
   private createSvgElement<T extends SVGElement = SVGElement>(
     name: string,
   ): T {
-    return this.renderer.createElement(name, svgNamespace);
+    return this.renderer.createElement(name, 'svg');
   }
 
   private createWrapper(): HTMLElement {
