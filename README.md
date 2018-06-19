@@ -30,6 +30,7 @@ yarn add ngx-material-components
 
 ```typescript
 // my-feature.module.ts
+import { NgModule } from '@angular/core';
 import { MdcCheckboxModule } from 'ngx-material-components';
 
 @NgModule({
@@ -58,4 +59,41 @@ export class MyFeatureModule {}
     My checkbox
   </label>
 </div>
+```
+
+### Component usage
+
+#### Component template
+
+```html
+<!-- my-feature.component.html -->
+<div class="mdc-form-field">
+  <mdc-checkbox
+    [(checked)]="checked"
+    controlId="my-checkbox"
+    [disabled]="false"
+    [indeterminate]="false"
+    name="post-name"
+    value="post-value""></mdc-checkbox>
+
+  <label for="my-checkbox">
+    My checkbox
+  </label>
+</div>
+
+```
+
+#### Component model
+
+```typescript
+// my-feature.component.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-my-feature',
+  templateUrl: './my-feature.component.html',
+})
+export class MyFeatureComponent {
+  checked: boolean = false;
+}
 ```
