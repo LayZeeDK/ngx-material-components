@@ -50,7 +50,7 @@ implements AfterViewInit, OnChanges, OnInit {
   ) {}
 
   ngOnChanges(): void {
-    this.renderer.synchronizeState();
+    // this.renderer.synchronizeState();
   }
 
   ngOnInit(): void {
