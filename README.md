@@ -30,7 +30,7 @@ yarn add ngx-material-components
 
 ```typescript
 // my-feature.module.ts
-import { MdcCheckboxModule } from 'ngx-material-component';
+import { MdcCheckboxModule } from 'ngx-material-components';
 
 @NgModule({
   imports: [
