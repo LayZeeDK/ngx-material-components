@@ -45,8 +45,7 @@ implements AfterViewInit, OnChanges, OnInit {
   readonly checkedChange: EventEmitter<boolean> = new EventEmitter();
 
   constructor(
-    @Self()
-    private readonly renderer: MdcCheckboxRenderer,
+    @Self() private readonly renderer: MdcCheckboxRenderer,
   ) {}
 
   ngOnChanges(): void {
